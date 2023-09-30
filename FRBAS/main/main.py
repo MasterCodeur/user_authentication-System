@@ -6,8 +6,10 @@ from datetime import datetime
 from flask import Flask, flash, request, redirect, url_for, render_template, Response
 from werkzeug.utils import secure_filename
 
+
 UPLOAD_FOLDER = r'D:\FRBAS\img'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
 
 
 def allowed_file(filename):
@@ -18,6 +20,7 @@ def allowed_file(filename):
 app = Flask(__name__)
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 
 @app.route('/')
@@ -42,6 +45,7 @@ def success():
     else:
         flash('*Not Uploaded!!! Invalid file type')
         return render_template('upload.html')
+
 
 
 @app.route('/index')
@@ -69,6 +73,7 @@ def gen():
             encodeList.append(encode)
         return encodeList
 
+    
     def takeAttendence(name):
         with open('attendence.csv', 'r+') as f:
             mypeople_list = f.readlines()
@@ -81,6 +86,7 @@ def gen():
                 datestring = now.strftime('%H:%M:%S')
                 f.writelines(f'\n{name},{datestring}')
 
+    
     encodeListknown = encoding_img(IMAGE_FILES)
 
 
@@ -95,6 +101,7 @@ def gen():
         fasescurrent = face_recognition.face_locations(imgc)
         encode_fasescurrent = face_recognition.face_encodings(imgc, fasescurrent)
 
+        
         for encodeFace, faceloc in zip(encode_fasescurrent, fasescurrent):
             matches_face = face_recognition.compare_faces(encodeListknown, encodeFace)
             face_distence = face_recognition.face_distance(encodeListknown, encodeFace)
@@ -110,8 +117,8 @@ def gen():
                 cv2.putText(img, name, (x1-15 , y2+36 ), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
                 takeAttendence(name)
 
-        # cv2.imshow("campare", img)
-        # cv2.waitKey(0)
+
+        
         frame = cv2.imencode('.jpg', img)[1].tobytes()
         yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
         key = cv2.waitKey(20)
@@ -119,9 +126,12 @@ def gen():
             break
 
 
+
 @app.route('/video_feed')
 def video_feed():
 
+
+    
     return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
