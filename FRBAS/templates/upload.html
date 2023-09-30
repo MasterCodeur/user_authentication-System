@@ -21,13 +21,11 @@
       border-style: solid;
       border-width: 5px;
     }
-
     .container {
       max-width: 600px;
       margin: auto;
       text-align: center;
     }
-
     .split {
       height: 77%;
       width: 50%;
@@ -37,37 +35,28 @@
       overflow-x: hidden;
       padding-top: 20px;
     }
-
     .left {
       left: 0;
       background-color: rgb(52, 92, 54);
       background-image: url('https://cdn.wallpapersafari.com/39/69/PbLxMX.jpg');
       border-style: solid;
-
     }
-
     .right {
       right: 0;
       background-color: rgb(82, 110, 124);
       background-image: url('https://cutewallpaper.org/cdn-cgi/mirage/879d3f56044898301ccabab4a8a90586cd5663eca603a14193df05b49a03034b/1280/21/light-blue-backgrounds/Blue-Background-For-Powerpoint-Fieldstation.co-throughout-.jpg');
       border-style: solid;
-
     }
-
     .centered {
-
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
     }
-
     .centered button {
       width: 150px;
-
     }
-
     h2 {
       margin-top: 4cm;
       line-height: 1;
@@ -88,7 +77,6 @@
 }
   </style>
 
-
   <h1 style="background-color:rgb(76, 126, 153);">
     Face Recognition Based Attendance System
   </h1>
@@ -102,10 +90,7 @@
     <div class="mx-auto">
       <h2><b>Not Enrolled!</b><br><br>Upload Your picture for Attendance</h2>
     </div>
-
     <br><br>
-
-
     <form action="/success" method="post" enctype="multipart/form-data" onsubmit="alert('confirm to submit');">
 
       <div class="input-group mb-3">
@@ -128,13 +113,9 @@
    {% endif %}
 {% endwith %}
     <h6> *Upload Png, Jpg, Jpeg, Gif Format only<br>*Image name should be your name</h6>
-
-
-
+  
   </div>
-
-
-
+  
   <div class="split left">
     <h2><b>Enrolled!<br><br> Mark Attendance</b></h2>
     <div class="centered">
